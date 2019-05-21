@@ -31,12 +31,14 @@ class Manager < Employee
 
   def total_employee_salary
     return salary if employees.empty?
+
     total_salary = 0 
+
     @employees.each do |employee|
-      total_salary += (employee.employees.empty? ? employee.salary : employee.total_employee_salary)
+      total_salary += (!employee.is_a?(Manager) ? employee.salary : employee.total_employee_salary)
     end 
+    
     total_salary
-  
   end 
 end
 
